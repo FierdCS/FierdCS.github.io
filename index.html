@@ -104,7 +104,7 @@
         function speakText(element, text) {
             const synth = window.speechSynthesis;
             
-            // Check if the element has not been spoken before
+            // Check if the element has not been spoken before or if it's being hovered over again
             if (!spokenElements.has(element)) {
                 const utterance = new SpeechSynthesisUtterance(text);
 
@@ -114,10 +114,11 @@
 
                 synth.speak(utterance);
                 spokenElements.add(element); // Mark the element as spoken
+            } else {
+                spokenElements.delete(element); // Reset the flag for this element
             }
         }
     </script>
-
     
 </body>
 </html>
