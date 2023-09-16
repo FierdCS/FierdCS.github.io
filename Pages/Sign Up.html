@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Sign-Up</title>
     <style>
-        /* Add your CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -35,7 +34,8 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="submit"] {
+        input[type="submit"],
+        select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -47,14 +47,6 @@
             background-color: #333;
             color: #fff;
             cursor: pointer;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
         }
     </style>
 </head>
@@ -79,11 +71,28 @@
                 <option value="event3">Event 3</option>
             </select>
 
+            <label for="newEvent">Or Add a New Event:</label>
+            <input type="text" id="newEvent" placeholder="Enter a new event name">
+            <button type="button" onclick="addNewEvent()">Add Event</button>
+
             <!-- Add more fields for event details, such as date, location, etc. -->
 
             <input type="submit" value="Sign Up">
         </form>
     </div>
+
+    <script>
+        function addNewEvent() {
+            const newEventName = document.getElementById("newEvent").value;
+            if (newEventName) {
+                const eventDropdown = document.getElementById("event");
+                const newOption = document.createElement("option");
+                newOption.value = newEventName;
+                newOption.text = newEventName;
+                eventDropdown.appendChild(newOption);
+                document.getElementById("newEvent").value = "";
+            }
+        }
+    </script>
 </body>
 </html>
-
