@@ -18,10 +18,7 @@
         border:1px solid;
         margin:10px;
     }
-    .hover-text {
-        cursor: pointer;
-        text-decoration: underline;
-    }
+    
     </style>
 
     <style>
@@ -99,51 +96,6 @@
     </div>
      
 
-    <h1>Hover over any element to hear it:</h1>
-    <p>
-        <button onclick="toggleSpeak('paragraph')">Toggle Speak</button>
-        Hover over me
-    </p>
-    <button onclick="toggleSpeak('button')">Toggle Speak</button>
-    <a href="#">
-        <button onclick="toggleSpeak('link')">Toggle Speak</button>
-        Hover over this link
-    </a>
-
-    <script>
-        const spokenElements = new Set(); // Set to track spoken elements
-
-        function speakText(text) {
-            const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(text);
-
-            // Adjust speech options here if needed
-            utterance.rate = 1; // Speech rate (1 is the default)
-            utterance.pitch = 1; // Speech pitch (1 is the default)
-
-            synth.speak(utterance);
-        }
-
-        function toggleSpeak(elementType) {
-            const elements = document.querySelectorAll(elementType);
-            elements.forEach((element) => {
-                if (spokenElements.has(element)) {
-                    spokenElements.delete(element);
-                } else {
-                    spokenElements.add(element);
-                }
-            });
-        }
-
-        document.querySelectorAll('*').forEach((element) => {
-            element.addEventListener('mouseover', () => {
-                // Check if the element has not been spoken before
-                if (!spokenElements.has(element)) {
-                    speakText(element.innerText);
-                    spokenElements.add(element); // Mark the element as spoken
-                }
-            });
-        });
-    </script> 
+    
 </body>
 </html>
