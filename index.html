@@ -18,9 +18,11 @@
         border:1px solid;
         margin:10px;
     }
-    
+    .hover-text {
+        cursor: pointer;
+        text-decoration: underline;
+    }
     </style>
-
     <style>
     .flex-container {
       display: flex;
@@ -35,7 +37,6 @@
       font-size: 25px;
     }
     </style>
-
     
 </head>
 <body>
@@ -51,7 +52,7 @@
     </nav>
     <div class="flex-container">
           <div>
-          <div> 
+          <div class="hover-text" onmouseover="speakText('Click On This Picture for yoga!')"> 
           <p>
           <a href = "yoga.html" target="_blank" style="display: inline">        
             <img src="yoga.jpg" width="600" height="400">
@@ -60,9 +61,8 @@
           </p>
           </div>
           </div>
-
           <div>
-          <div>
+          <div class="hover-text" onmouseover="speakText('Click On This Picture for bookclub!')">
           <p>
           <a href = "bookclub.html" target="_blank">  
             <img src="bookclub.jpg" width="600" height="400">
@@ -71,9 +71,8 @@
           </p>
           </div>
           </div>
-
           <div>  
-          <div>
+          <div class="hover-text" onmouseover="speakText('Click On This Picture for bingo!')">
           <p>
           <a href = "Bingo.html" target="_blank">
             <img src="bingo.jpg" width="600" height="400">
@@ -82,9 +81,8 @@
           </p>
           </div>
           </div>
-
           <div>
-          <div>
+          <div class="hover-text" onmouseover="speakText('Click On This Picture for bowling!')">
           <p>
           <a href = "bowling.html" target="_blank">
             <img src="bowling.jpg" width="600" height="400">
@@ -94,31 +92,20 @@
           </div>
           </div>
     </div>
-    <h1>Hover over any element to hear it:</h1>
-    <p onmouseover="speakText(this, 'Hover over me')">Hover over me</p>
-    <p onmouseover="speakText(this, 'This is another example')">This is another example</p>
-
+     
     <script>
-        const spokenElements = new Set(); // Set to track spoken elements
-
-        function speakText(element, text) {
+        function speakText(text) {
             const synth = window.speechSynthesis;
-            
-            // Check if the element has not been spoken before or if it's being hovered over again
-            if (!spokenElements.has(element)) {
-                const utterance = new SpeechSynthesisUtterance(text);
+            const utterance = new SpeechSynthesisUtterance(text);
 
-                // Adjust speech options here if needed
-                utterance.rate = 1; // Speech rate (1 is the default)
-                utterance.pitch = 1; // Speech pitch (1 is the default)
+            // Adjust speech options here if needed
+            utterance.rate = 1; // Speech rate (1 is the default)
+            utterance.pitch = 1; // Speech pitch (1 is the default)
+            utterance.rate = 10; // Speech rate (1 is the default)
+            utterance.pitch = 10; // Speech pitch (1 is the default)
 
-                synth.speak(utterance);
-                spokenElements.add(element); // Mark the element as spoken
-            } else {
-                spokenElements.delete(element); // Reset the flag for this element
-            }
+            synth.speak(utterance);
         }
-    </script>
-    
+    </script>    
 </body>
 </html>
