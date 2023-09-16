@@ -92,19 +92,30 @@
           </div>
           </div>
     </div>
-     
     <script>
-        function speakText(text) {
+        const spokenElements = new Set(); // Set to track spoken elements
+
+        function speakText(element) {
             const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Check if the element has been spoken before
+            if (spokenElements.has(element)) {
+                // Reset the "spoken" status for this element
+                spokenElements.delete(element);
+            }
+
+            const utterance = new SpeechSynthesisUtterance(element.innerText);
 
             // Adjust speech options here if needed
             utterance.rate = 2; // Speech rate (1 is the default)
             utterance.pitch = 2; // Speech pitch (1 is the default)
-            
 
             synth.speak(utterance);
+
+            // Mark the element as spoken
+            spokenElements.add(element);
         }
-    </script>    
+    </script> 
+        
 </body>
 </html>
