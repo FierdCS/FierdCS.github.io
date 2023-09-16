@@ -94,7 +94,29 @@
           </div>
           </div>
     </div>
-     
+    <h1>Hover over any element to hear it:</h1>
+    <p onmouseover="speakText(this, 'Hover over me')">Hover over me</p>
+    <p onmouseover="speakText(this, 'This is another example')">This is another example</p>
+
+    <script>
+        const spokenElements = new Set(); // Set to track spoken elements
+
+        function speakText(element, text) {
+            const synth = window.speechSynthesis;
+            
+            // Check if the element has not been spoken before
+            if (!spokenElements.has(element)) {
+                const utterance = new SpeechSynthesisUtterance(text);
+
+                // Adjust speech options here if needed
+                utterance.rate = 1; // Speech rate (1 is the default)
+                utterance.pitch = 1; // Speech pitch (1 is the default)
+
+                synth.speak(utterance);
+                spokenElements.add(element); // Mark the element as spoken
+            }
+        }
+    </script>
 
     
 </body>
