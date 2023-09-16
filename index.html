@@ -18,6 +18,10 @@
         border:1px solid;
         margin:10px;
     }
+    .hover-text {
+        cursor: pointer;
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
@@ -68,8 +72,21 @@
            </p>
           </div>
 
-          </div>
+    </div>
      
+    <div class="hover-text" onmouseover="speakText('Hello, I am text that can be read aloud.')">Hover over me</div>
 
+    <script>
+        function speakText(text) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            // Adjust speech options here if needed
+            utterance.rate = 1; // Speech rate (1 is the default)
+            utterance.pitch = 1; // Speech pitch (1 is the default)
+
+            synth.speak(utterance);
+        }
+    </script>    
 </body>
 </html>
