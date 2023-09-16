@@ -23,6 +23,23 @@
         text-decoration: underline;
     }
     </style>
+
+    <style>
+    .flex-container {
+      display: flex;
+      background-color: DodgerBlue;
+      flex-wrap: wrap;
+    }
+    
+    .flex-container > div {
+      background-color: #f1f1f1;
+      margin: 10px;
+      padding: 20px;
+      font-size: 30px;
+    }
+    </style>
+
+    
 </head>
 <body>
     <nav>
@@ -35,8 +52,8 @@
         
       </ul> 
     </nav>
-    <div style="display: flex">
-    <div style = "flex-wrap: wrap-reverse">
+    <div class="flex-container">
+          <div>
           <div class="hover-text" onmouseover="speakText('Click On This Picture for yoga!')">Click On This Picture for yoga!>  
           <p>
           <a href = "yoga.html" target="_blank" style="display: inline">        
@@ -45,7 +62,9 @@
             Click On This Picture for yoga!
           </p>
           </div>
+          </div>
 
+          <div>
           <div class="hover-text" onmouseover="speakText('Click On This Picture for bookclub!')">Click On This Picture for bookclub!>
           <p>
           <a href = "bookclub.html" target="_blank">  
@@ -54,7 +73,9 @@
             Click On This Picture for bookclub!
           </p>
           </div>
-    
+          </div>
+
+          <div>  
           <div class="hover-text" onmouseover="speakText('Click On This Picture for bingo!')">Click On This Picture for bingo!>
           <p>
           <a href = "Bingo.html" target="_blank">
@@ -63,7 +84,9 @@
             Click On This Picture for bingo!
           </p>
           </div>
+          </div>
 
+          <div>
           <div class="hover-text" onmouseover="speakText('Click On This Picture for bowling!')">Click On This Picture for bowling!>
           <p>
           <a href = "bowling.html" target="_blank">
@@ -72,7 +95,7 @@
             Click On This Picture for bowling!
            </p>
           </div>
-    </div>
+          </div>
     </div>
      
     <div class="hover-text" onmouseover="speakText('Hello, I am text that can be read aloud.')">Hover over me</div>
