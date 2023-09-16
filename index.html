@@ -99,17 +99,34 @@
     </div>
      
 
+    <h1>Hover over any element to hear it:</h1>
+    <p>Hover over me</p>
+    <button>Hover over this button</button>
+    <a href="#">Hover over this link</a>
+
     <script>
+        const spokenElements = new Set(); // Set to track spoken elements
+
         function speakText(text) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(text);
 
             // Adjust speech options here if needed
-            utterance.rate = 10; // Speech rate (1 is the default)
-            utterance.pitch = 10; // Speech pitch (1 is the default)
+            utterance.rate = 1; // Speech rate (1 is the default)
+            utterance.pitch = 1; // Speech pitch (1 is the default)
 
             synth.speak(utterance);
         }
-    </script>    
+
+        document.body.addEventListener('mouseover', (event) => {
+            const target = event.target;
+
+            // Check if the element has not been spoken before
+            if (!spokenElements.has(target)) {
+                speakText(target.innerText);
+                spokenElements.add(target); // Mark the element as spoken
+            }
+        });
+    </script> 
 </body>
 </html>
