@@ -8,15 +8,15 @@
     <style type="text/css">
     p
     {
-        border:2px solid black;
-        font-size16pt;
-        width:650px;
-        height:500px;
+        border: 2px solid black;
+        font-size: 16pt;
+        width: 650px;
+        height: 500px;
     }
     img
     {
-        border:1px solid;
-        margin:10px;
+        border: 1px solid;
+        margin: 10px;
     }
     .hover-text {
         cursor: pointer;
@@ -47,7 +47,6 @@
         <li class="item"><a href="Pages/about.html">About</a></li>
         <li class="item button"><a href="Pages/Sign Up.html">Sign Up To Events</a></li>
         <li class="toggle"><span class="bars"></span></a></li>
-        
       </ul> 
     </nav>
     <div class="flex-container">
@@ -95,16 +94,16 @@
     <script>
         const spokenElements = new Set(); // Set to track spoken elements
 
-        function speakText(element) {
+        function speakText(text) {
             const synth = window.speechSynthesis;
             
-            // Check if the element has been spoken before
-            if (spokenElements.has(element)) {
-                // Reset the "spoken" status for this element
-                spokenElements.delete(element);
+            // Check if the text has been spoken before
+            if (spokenElements.has(text)) {
+                // Reset the "spoken" status for this text
+                spokenElements.delete(text);
             }
 
-            const utterance = new SpeechSynthesisUtterance(element.innerText);
+            const utterance = new SpeechSynthesisUtterance(text);
 
             // Adjust speech options here if needed
             utterance.rate = 2; // Speech rate (1 is the default)
@@ -112,8 +111,8 @@
 
             synth.speak(utterance);
 
-            // Mark the element as spoken
-            spokenElements.add(element);
+            // Mark the text as spoken
+            spokenElements.add(text);
         }
     </script> 
         
