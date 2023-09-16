@@ -97,7 +97,7 @@
         function speakText(text) {
             const synth = window.speechSynthesis;
             
-            // Check if the text has been spoken before
+            
             if (spokenElements.has(text)) {
                 // Reset the "spoken" status for this text
                 spokenElements.delete(text);
@@ -105,13 +105,13 @@
 
             const utterance = new SpeechSynthesisUtterance(text);
 
-            // Adjust speech options here if needed
+            
             utterance.rate = 2; // Speech rate (1 is the default)
             utterance.pitch = 2; // Speech pitch (1 is the default)
 
             synth.speak(utterance);
 
-            // Mark the text as spoken
+            
             spokenElements.add(text);
         }
     </script> 
