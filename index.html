@@ -54,7 +54,7 @@
     </nav>
     <div class="flex-container">
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for yoga!')"> 
+          <div> 
           <p>
           <a href = "yoga.html" target="_blank" style="display: inline">        
             <img src="yoga.jpg" width="600" height="400">
@@ -65,7 +65,7 @@
           </div>
 
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for bookclub!')">
+          <div>
           <p>
           <a href = "bookclub.html" target="_blank">  
             <img src="bookclub.jpg" width="600" height="400">
@@ -76,7 +76,7 @@
           </div>
 
           <div>  
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for bingo!')">
+          <div>
           <p>
           <a href = "Bingo.html" target="_blank">
             <img src="bingo.jpg" width="600" height="400">
@@ -87,7 +87,7 @@
           </div>
 
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for bowling!')">
+          <div>
           <p>
           <a href = "bowling.html" target="_blank">
             <img src="bowling.jpg" width="600" height="400">
@@ -100,9 +100,15 @@
      
 
     <h1>Hover over any element to hear it:</h1>
-    <p>Hover over me</p>
-    <button>Hover over this button</button>
-    <a href="#">Hover over this link</a>
+    <p>
+        <button onclick="toggleSpeak('paragraph')">Toggle Speak</button>
+        Hover over me
+    </p>
+    <button onclick="toggleSpeak('button')">Toggle Speak</button>
+    <a href="#">
+        <button onclick="toggleSpeak('link')">Toggle Speak</button>
+        Hover over this link
+    </a>
 
     <script>
         const spokenElements = new Set(); // Set to track spoken elements
@@ -118,14 +124,25 @@
             synth.speak(utterance);
         }
 
-        document.body.addEventListener('mouseover', (event) => {
-            const target = event.target;
+        function toggleSpeak(elementType) {
+            const elements = document.querySelectorAll(elementType);
+            elements.forEach((element) => {
+                if (spokenElements.has(element)) {
+                    spokenElements.delete(element);
+                } else {
+                    spokenElements.add(element);
+                }
+            });
+        }
 
-            // Check if the element has not been spoken before
-            if (!spokenElements.has(target)) {
-                speakText(target.innerText);
-                spokenElements.add(target); // Mark the element as spoken
-            }
+        document.querySelectorAll('*').forEach((element) => {
+            element.addEventListener('mouseover', () => {
+                // Check if the element has not been spoken before
+                if (!spokenElements.has(element)) {
+                    speakText(element.innerText);
+                    spokenElements.add(element); // Mark the element as spoken
+                }
+            });
         });
     </script> 
 </body>
