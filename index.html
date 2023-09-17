@@ -52,8 +52,8 @@
     <div class="flex-container">
           
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Yoga!')"> 
-          <p>
+          <div> 
+          <p  id="hoverText">
           <a href = "yoga.html" target="_blank" style="display: inline">        
             <img src="yoga.jpg" width="600" height="400">
           </a>
@@ -64,8 +64,8 @@
 
         
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Bookclub!')">
-          <p>
+          <div>
+          <p id="hoverText">
           <a href = "bookclub.html" target="_blank">  
             <img src="bookclub.jpg" width="600" height="400">
           </a>
@@ -76,8 +76,8 @@
 
         
           <div>  
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Bingo!')">
-          <p>
+          <div>
+          <p id="hoverText">
           <a href = "Bingo.html" target="_blank">
             <img src="bingo.jpg" width="600" height="400">
           </a>
@@ -88,8 +88,8 @@
 
         
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Bowling!')">
-          <p>
+          <div>
+          <p id="hoverText">
           <a href = "bowling.html" target="_blank">
             <img src="golf.jpg" width="600" height="400">
           </a>
@@ -99,7 +99,7 @@
           </div>
 
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Neigborhood Activities!')">
+          <div>
           <p>
           <a href = "neighborhood.html" target="_blank">
             <img src="neighborhood.jpg" width="600" height="400">
@@ -110,8 +110,8 @@
           </div>
 
           <div>
-          <div class="hover-text" onmouseover="speakText('Click On This Picture for Fitness Activities!')">
-          <p>
+          <div>
+          <p id="hoverText">
           <a href = "fitcenter.html" target="_blank">
             <img src="fitness.jpg" width="600" height="400">
           </a>
@@ -125,28 +125,19 @@
 
     
     <script>
-        const spokenElements = new Set(); // Set to track spoken elements
+       const hoverText = document.getElementById('hoverText');
+        let utterance = new SpeechSynthesisUtterance();
+        
+        hoverText.addEventListener('mouseenter', () => {
+            const textToRead = hoverText.innerText;
+            utterance.text = textToRead;
+            speechSynthesis.speak(utterance);
+        });
 
-        function speakText(text) {
-            const synth = window.speechSynthesis;
-            
-            
-            if (spokenElements.has(text)) {
-                // Reset the "spoken" status for this text
-                spokenElements.delete(text);
-            }
-
-            const utterance = new SpeechSynthesisUtterance(text);
-
-            
-            utterance.rate = 1; // Speech rate (1 is the default)
-            utterance.pitch = 1; // Speech pitch (1 is the default)
-
-            synth.speak(utterance);
-
-            
-            spokenElements.add(text);
-        }
+        hoverText.addEventListener('mouseleave', () => {
+            speechSynthesis.cancel();
+        });
+        
     </script> 
         
 </body>
