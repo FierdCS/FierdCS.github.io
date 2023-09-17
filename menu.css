@@ -57,6 +57,7 @@ a{
     text-align: center;
 }
 .item{
+    font-size:50px;
     width:100%;
     text-align: center;
     order:3;
