@@ -6,14 +6,44 @@
 	<head>
 	<body>
 	
-	<h1>Senior Squad</h1>
-	<p> Here is the website for Golf!!! <p>
-	<iframe src="https://calendar.google.com/calendar/embed?src=37d7c0412bbcaa3ef6964165de465361108d5fd185e6af65031c035449656fa0%40group.calendar.google.com&ctz=America%2FDetroit" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	<h1>Let's go Bowl!</h1>
+	<h3>RSVP</h3>	
+	<div>
+	  <form action="https://sheetdb.io/api/v1/qzjp5rfwp89nb" method="post" id="sheetdb-form" >
+	    <label for="name">Name</label>
+	    <input type="text" id="name" name="data[name]" placeholder="Your name..">
+	
+	    <label for="location">Location</label>
+	    <input type="text" id="location" name="data[location]" placeholder="Location I want to do Yoga...">
+	
+	  
+	    <input type="submit" value="Submit">
+	  </form>
+	</div>
+	
 	<p style="font-size:25px"> Benefits of playing golf </p>
 	<ul style="list-style-type:disc;">
   	<li style="font-size:25px">Golfing requires some level of exercise which can reduce depression and anxiety</li>
   	<li style="font-size:25px">Builds self confidence with improvement</li>
 	<li style="font-size:25px">Can help with building patience</li>
 	<li style="font-size:10px">Gregory, N. (2023, April 13). The Mental Health Benefits Of Golf As You Age. Forbes Health. https://www.forbes.com/health/healthy-aging/mental-health-benefits-of-golf-as-you-age/</li>
+	<iframe src="https://calendar.google.com/calendar/embed?src=37d7c0412bbcaa3ef6964165de465361108d5fd185e6af65031c035449656fa0%40group.calendar.google.com&ctz=America%2FDetroit" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	<script>
+		var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            // you can put any JS code here
+            window.open('page2.html', '_blank');
+
+          });
+        });
+	</script>	
 	</body>
-	</html>
+		
+</html>
