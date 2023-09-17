@@ -39,6 +39,9 @@ a{
     width: 100%;
     
 }
+.item a{
+    font-size:50px;
+}
 
 
 
@@ -54,7 +57,6 @@ a{
     text-align: center;
 }
 .item{
-    text-size-adjust: 23;
     width:100%;
     text-align: center;
     order:3;
