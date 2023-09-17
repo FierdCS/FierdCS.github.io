@@ -125,17 +125,19 @@
 
     
     <script>
-       const hoverText = document.getElementById('hoverText');
+       const paragraphs = document.querySelectorAll('.hoverText');
         let utterance = new SpeechSynthesisUtterance();
         
-        hoverText.addEventListener('mouseenter', () => {
-            const textToRead = hoverText.innerText;
-            utterance.text = textToRead;
-            speechSynthesis.speak(utterance);
-        });
+        paragraphs.forEach(paragraph => {
+            paragraph.addEventListener('mouseenter', () => {
+                const textToRead = paragraph.innerText;
+                utterance.text = textToRead;
+                speechSynthesis.speak(utterance);
+            });
 
-        hoverText.addEventListener('mouseleave', () => {
-            speechSynthesis.cancel();
+            paragraph.addEventListener('mouseleave', () => {
+                speechSynthesis.cancel();
+            });
         });
         
     </script> 
