@@ -125,9 +125,17 @@
 
     
     <script>
-       const paragraphs = document.querySelectorAll('.hoverText');
+        const paragraphs = document.querySelectorAll('.hoverText');
         let utterance = new SpeechSynthesisUtterance();
-        
+
+        // Find a female voice by name or other criteria
+        const femaleVoice = speechSynthesis.getVoices().find(voice => voice.name === 'Your Female Voice Name');
+
+        // Set the voice to the female voice
+        if (femaleVoice) {
+            utterance.voice = femaleVoice;
+        }
+
         paragraphs.forEach(paragraph => {
             paragraph.addEventListener('mouseenter', () => {
                 const textToRead = paragraph.innerText;
@@ -139,7 +147,6 @@
                 speechSynthesis.cancel();
             });
         });
-        
     </script> 
         
 </body>
