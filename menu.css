@@ -54,6 +54,7 @@ a{
     text-align: center;
 }
 .item{
+    text-size-adjust: 23;
     width:100%;
     text-align: center;
     order:3;
