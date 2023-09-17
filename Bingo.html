@@ -5,16 +5,45 @@
 		<link rel="stylesheet" href="Bingo.css">
 	<head>
 	<body>
+	<h1>Bingo! It's your luck day!</h1>
+	<h3>RSVP</h3>	
+	<div>
+	  <form action="https://sheetdb.io/api/v1/qzjp5rfwp89nb" method="post" id="sheetdb-form" >
+	    <label for="name">Name</label>
+	    <input type="text" id="name" name="data[name]" placeholder="Your name..">
 	
-	<h1>Senior Squad</h1>
-	<p> Here is the website for Bingo!!! </p>
-	<iframe src="https://calendar.google.com/calendar/embed?src=356f742f34afac26ca0c8ada6e22db1f42397172cf3cfc7cedb5a6b8fdc88acf%40group.calendar.google.com&ctz=America%2FDetroit" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	    <label for="location">Location</label>
+	    <input type="text" id="location" name="data[location]" placeholder="Location I want to do Yoga...">
+	
+	  
+	    <input type="submit" value="Submit">
+	  </form>
+	</div>
+
 	<p style="font-size:25px"> Benefits of playing bingo </p>
 	<ul style="list-style-type:disc;">
   	<li style="font-size:25px">Helps Maintain Social Connections</li>
   	<li style="font-size:25px">Improves mental capabilities and memory</li>
 	<li style="font-size:25px">Helps imporves hand-eye cordination</li>	
   	<p style="font-size:10px">Auralcrave. (2021). Can playing a game of bingo be good for your health? Auralcrave. https://auralcrave.com/en/2021/04/26/can-playing-a-game-of-bingo-be-good-for-your-health/#The%20Physical%20Health%20Benefits%20of%20Bingo</p>
+	<iframe src="https://calendar.google.com/calendar/embed?src=356f742f34afac26ca0c8ada6e22db1f42397172cf3cfc7cedb5a6b8fdc88acf%40group.calendar.google.com&ctz=America%2FDetroit" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 	</ul>
 	</body>
+
+	<script>
+		var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            // you can put any JS code here
+            window.open('page2.html', '_blank');
+
+          });
+        });
+	</script>
 	</html>
